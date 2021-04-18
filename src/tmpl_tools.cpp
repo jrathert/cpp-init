@@ -50,9 +50,11 @@ std::map<std::string, std::string> tmpl_values {
  * that name exists, does nothing
  */
 int dump(const std::string& dir) {
-    struct stat info;
-    const std::string& basedir = dir.ends_with('/') ? dir.substr(0, dir.length()-1) : dir;
 
+    bool dir_has_trailing_slash = (dir.length() > 1 && (dir.at(dir.length()-1) == '/'));
+    const std::string& basedir = dir_has_trailing_slash ? dir.substr(0, dir.length()-1) : dir;
+
+    struct stat info;
     if ( stat(basedir.c_str(), &info) == 0 ) {  
         std::cout << "Target '" << basedir << "' exists - doing nothing" << std::endl;
         return 1;
@@ -73,6 +75,7 @@ int dump(const std::string& dir) {
         write_tmpl_file(vscdir + "/launch.json", tmpl_launch_str, tmpl_values);
         write_tmpl_file(vscdir + "/tasks.json", tmpl_tasks_str, tmpl_values);
         write_tmpl_file(vscdir + "/c_cpp_properties.json", tmpl_cpp_prop_str, tmpl_values);
+        
         return 0;
     }
 }
