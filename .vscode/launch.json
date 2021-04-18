@@ -6,7 +6,7 @@
     "configurations": [
         
         {
-            "name": "(gdb) Launch hello",
+            "name": "(gdb) Make and launch hello",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/bin/cpp-init",
@@ -25,13 +25,12 @@
             ],
             "preLaunchTask": "Build using GNU make",
             "miDebuggerPath": "/usr/bin/gdb"
-        },
-        
+        },        
         {
             "name": "g++-10 - Build and debug active file",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/bin/${fileBasenameNoExtension}",
+            "program": "${workspaceFolder}/bin/cpp-init",
             "args": [],
             "stopAtEntry": true,
             "cwd": "${workspaceFolder}",
@@ -47,6 +46,20 @@
             ],
             "preLaunchTask": "C/C++: g++-10 build active file",
             "miDebuggerPath": "/usr/bin/gdb"
+        },
+        {
+            "name": "clang++ - Build and debug active file",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/bin/cpp-init",
+            "args": [],
+            "stopAtEntry": true,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "preLaunchTask": "C/C++: clang++ build active file"
         }
+
     ]
 }

@@ -38,9 +38,9 @@
 				"-ggdb3",
 				"-W",
 				"-Wall",
-				"${fileDirname}/*",
+				"${workspaceFolder}/src/*.cpp",
 				"-o",
-				"${workspaceFolder}/bin/${fileBasenameNoExtension}"
+				"${workspaceFolder}/bin/cpp-init"
 			],
 			"options": {
 				"cwd": "${workspaceFolder}"
@@ -49,6 +49,32 @@
 				"$gcc"
 			],
 			"detail": "compiler: /usr/bin/g++-10"
+		},
+		{
+			"type": "cppbuild",
+			"label": "C/C++: clang++ build active file",
+			"command": "/usr/bin/clang++",
+			"args": [
+				"-std=c++17",
+				"-g",
+				"-ggdb3",
+				"-W",
+				"-Wall",
+				"${workspaceFolder}/src/*.cpp",
+				"-o",
+				"${workspaceFolder}/bin/cpp-init"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"detail": "compiler: /usr/bin/clang++"
 		}
 	]
 }
