@@ -20,34 +20,34 @@
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-BINDIR     ::= bin
-OBJDIR     ::= obj
-SRCDIR     ::= src
-DEPDIR     ::= .dep
-INCLUDEDIR ::= include
+BINDIR     := bin
+OBJDIR     := obj
+SRCDIR     := src
+DEPDIR     := .dep
+INCLUDEDIR := include
 
-STD_VERSION ::= c++20
+STD_VERSION := c++17
 
-DEBUG_FLAGS ::= -g3 -ggdb3 -DDEBUG=1
-OPTIM_FLAGS ::= -O3
-WARN_FLAGS  ::= -W -Wall
+DEBUG_FLAGS := -g3 -ggdb3 -DDEBUG=1
+OPTIM_FLAGS := -O3
+WARN_FLAGS  := -W -Wall
 
-CXX         ::= /usr/bin/g++-10
-CPPFLAGS    ::= -I$(INCLUDEDIR)
-CXXFLAGS    ::= -std=$(STD_VERSION) $(WARN_FLAGS) 
-CXXDEFS	    ::=
-LDFLAGS     ::=    
-LDLIBS      ::= 
+CXX         := /usr/bin/g++-10
+CPPFLAGS    := -I$(INCLUDEDIR)
+CXXFLAGS    := -std=$(STD_VERSION) $(WARN_FLAGS) 
+CXXDEFS	    :=
+LDFLAGS     :=    
+LDLIBS      := 
 
-TARGET      ::= cpp-init
+TARGET      := cpp-init
 
 #
 # Usually, no changes needed below this line
 #
 
-SRCFILES ::= $(notdir $(wildcard $(SRCDIR)/*.cpp $(SRCDIR)/**/*.cpp))
-DEPFILES ::= $(SRCFILES:%.cpp=$(DEPDIR)/%.d)
-OBJFILES ::= $(addprefix $(OBJDIR)/, $(patsubst %.cpp, %.o, $(SRCFILES)))
+SRCFILES := $(notdir $(wildcard $(SRCDIR)/*.cpp $(SRCDIR)/**/*.cpp))
+DEPFILES := $(SRCFILES:%.cpp=$(DEPDIR)/%.d)
+OBJFILES := $(addprefix $(OBJDIR)/, $(patsubst %.cpp, %.o, $(SRCFILES)))
 
 #
 # set up dependency generation to speed up compilation after changes
