@@ -26,7 +26,7 @@ SRCDIR     := src
 DEPDIR     := .dep
 INCLUDEDIR := include
 
-STD_VERSION := c++17
+STD_VERSION := c++20
 
 DEBUG_FLAGS := -g3 -ggdb3 -DDEBUG=1
 OPTIM_FLAGS := -O3
