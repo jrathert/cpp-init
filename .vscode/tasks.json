@@ -70,10 +70,6 @@
 			"problemMatcher": [
 				"$gcc"
 			],
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			},
 			"detail": "compiler: /usr/bin/clang++"
 		}
 	]
