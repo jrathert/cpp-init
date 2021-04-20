@@ -29,6 +29,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <algorithm>
 
 #include "tmpl_tools.h"
 
@@ -46,12 +47,13 @@ public:
     }
 
     std::string namedOption(const std::string& option) const {
+        constexpr static const char* empty_string = "";
         auto it = std::find(args.begin(), args.end(), option);
         if (it != args.end() && ++it != args.end()) {
             return *it;
         }
         else {
-            return "";
+            return empty_string;
         }
     }
 
