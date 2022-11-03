@@ -64,7 +64,7 @@ private:
 };
 
 /*
- * Sets a template value from a comman line option (if it exists)
+ * Sets a template value from a command line option (if it exists)
  */ 
 void setFromOption(const CommandArguments& ca, const std::string& option, const std::string& key) {
     std::string val = ca.namedOption(option);
@@ -93,7 +93,7 @@ int main(int argc, char* argv[])
         std::exit(0);
     }
 
-    // check and replace template vallue, if they exists
+    // check and replace template value, if they exists
     setFromOption(args, args[0], "%%MAINPROG%%");
     setFromOption(args, "-c++", "%%CXX%%");
     setFromOption(args, "-gdb", "%%GDB%%");

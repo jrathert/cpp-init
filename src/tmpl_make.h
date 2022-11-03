@@ -41,7 +41,7 @@ OPTIM_FLAGS := -O3
 WARN_FLAGS  := -W -Wall
 
 CXX       := %%CXX%%
-CPPFLAGS  := -I$(INCLUDEDIR)
+CPPFLAGS  := -I$(CURDIR)/$(INCLUDEDIR)
 CXXFLAGS  := -std=$(STD_VERSION) $(WARN_FLAGS) 
 CXXDEFS	  :=
 LDFLAGS   :=    
@@ -70,6 +70,7 @@ else
 endif
 
 COMPILE.cc = $(CXX) $(DEPFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(TARGET_ARCH) -c
+LINK.o = $(CXX) $(CXXFLAGS) $(LDFLAGS) $(TARGET_ARCH)
 
 ### MAIN TARGETS ###
 
@@ -83,7 +84,7 @@ clean:
 ### OTHER TARGETS ###
 
 $(BINDIR)/$(TARGET): $(OBJFILES) | $(BINDIR)
-	$(LINK.cc) -o $@ $^ $(LDLIBS)
+	$(LINK.o) -o $@ $^ $(LDLIBS)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp $(DEPDIR)/%.d | $(OBJDIR) $(DEPDIR)
 	$(COMPILE.cc) $< $(OUTPUT_OPTION)

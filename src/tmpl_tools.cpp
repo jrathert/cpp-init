@@ -40,7 +40,7 @@ int write_tmpl_file(const std::string& fname, const char* tmpl, const std::map<s
  */
 std::map<std::string, std::string> tmpl_values {
     { "%%MAINPROG%%", "helloworld" },
-    { "%%CXX%%", "/usr/bin/g++-10" },
+    { "%%CXX%%", "/usr/bin/g++" },
     { "%%GDB%%", "/usr/bin/gdb" },
     { "%%STD_VERSION%%", "c++20" }
 };
@@ -88,9 +88,12 @@ int replace_tmpl_line(std::string& line, const std::map<std::string, std::string
     size_t last = 0;
     size_t p = 0;
 
+    // as long as the line contains a "%%"...
     while ( (p = line.find("%%", last)) != std::string::npos ) {
+        // ... find a matching "%%"
         last = line.find("%%", p+2) + 2;
         if (last != std::string::npos) {
+            // if it exists, extract the item, e.g., the text between the "%%...%%"
             size_t len = last-p;
             const std::string& item = line.substr(p, len);
             try {
